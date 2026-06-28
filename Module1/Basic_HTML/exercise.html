@@ -4,8 +4,186 @@
     <meta charset="UTF-8">
     <title>Exercise</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
+<h1>Basic HTML Table</h1>
+    <div class ="exc1">
+        <table class="table1" >
+            <tr>
+                <th>Level1</th>
+                <th>Level2</th>
+                <th>Level3</th>
+                <th>Info</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td rowspan="6">System</td>
+                <td rowspan="4">System Apps</td>
+                <td rowspan="3">SystemEnv</td>
+                <td>App Test</td>
+                <td>foo</td>
+            </tr>
+            <tr>
+                <td>App Memory</td>
+                <td>foo</td>
+            </tr>
+            <tr>
+                <td>App Test</td>
+                <td>bar</td>
+            </tr>
+            <tr>
+                <td>SystemEnv2</td>
+                <td>App Test</td>
+                <td>bar</td>
+            </tr>
+            <tr>
+                <td rowspan="2">System Memory</td>
+                <td rowspan="2">Memory Test</td>
+                <td>Memory Func</td>
+                <td>foo</td>
+            </tr>
+            <tr>
+                <td>Apes Test</td>
+                <td>foo</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class ="exc2">
+        <hr>
+        <h1>Market Reseach Survey</h1>
+        <p>Please take a few moments to complete this satifaction survey.</p>
+        <hr>
+        <form  method="post" class="form">
+
+            <div class = "section">
+                <label class="section-title"> What is your age range?</label>
+                <select name="age">
+                    <option value="kid">0-13</option>
+                    <option value="teen">14-17</option>
+                    <option value="adult">18-60</option>
+                    <option value="old">>60</option>
+                </select>
+            </div>
+
+            <div class ="section">
+                <label class="section-title"> What is your yearly income range?</label>
+                <select name="income">
+                    <option value="low">0-25000$</option>
+                    <option value="medium">25000-100000$</option>
+                    <option value="high">100000$-1000000$</option>
+                    <option value="veryhight">>1000000$</option>
+                </select>
+            </div>
+
+
+            <div class="section">
+                <label class="section-title">Gender Identity</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="male"> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                    <label><input type="radio" name="gender" value="nonbinary"> Nonbinary</label>
+                    <label><input type="radio" name="gender" value="other"> Other</label>
+                </div>
+                <textarea placeholder="Please specify..."></textarea>
+            </div>
+            <div class="section">
+                <label class="section-title"> Which of the following products have your purchased in last 2 months. Please check all that apply</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="Product 1"> Product 1</label>
+                    <label><input type="checkbox" name="Product 2"> Product 2</label>
+                    <label><input type="checkbox" name="Product 3"> Product 3</label>
+                </div>
+            </div>
+            <div class="section">
+                <label class="section-title">How often would you use our new product?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="often" value="daily"> Daily</label>
+                    <label><input type="radio" name="often" value="weekly"> Weekly</label>
+                    <label><input type="radio" name="often" value="monthly"> Monthly</label>
+                </div>
+            </div>
+            <div class="section">
+                <label class="section-title">What would you pay for new product?</label>
+                <div class ="section-money">
+                    <div>
+                        <input type="number" value="dolar">
+                        <p>Dolar</p>
+                    </div>
+                    <div>
+                        <input type="number" value="cents">
+                        <p>Cents</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <label class="section-title">What features would you like to see in the new product?</label>
+                <textarea placeholder="Please specify..."></textarea>
+            </div>
+
+            <div class="section">
+                <label class="section-title">Please rate your lever of agreement with the following statement</label>
+              <table  class="survey">
+                  <tr>
+                      <th></th>
+                      <th>Strongly Disagree</th>
+                      <th>Disagree</th>
+                      <th>Agree</th>
+                      <th>Strongly Disagree</th>
+                  </tr>
+                  <tr>
+                      <th>Our products are price faily.</th>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="1"> 1</label>
+                      </td>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="2"> 2</label>
+                      </td>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="3"> 3</label>
+                      </td>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="4"> 4</label>
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>Our products are hight quatity.</th>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="1"> 1</label>
+                      </td>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="2"> 2</label>
+                      </td>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="3"> 3</label>
+                      </td>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="4"> 4</label>
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>You would recoment out product to a friend or coworker.</th>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="1"> 1</label>
+                      </td>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="2"> 2</label>
+                      </td>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="3"> 3</label>
+                      </td>
+                      <td>
+                          <label> <input type = "radio" name ="rating" value ="4"> 4</label>
+                      </td>
+                  </tr>
+
+              </table>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
 
 </body>
 </html>

@@ -1,0 +1,68 @@
+.exc1{
+    display: flex;
+    justify-content: center;
+
+}
+.exc1,h1,td{
+text-align: center;
+}
+table{
+    min-width: 800px;
+    border: 1px solid;
+}
+th,td{
+    border: 1px solid;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 800px;
+}
+textarea{
+    width: 100px;
+}
+.section {
+    display: flex;
+    flex-direction: column; /* Xếp các phần tử dọc theo chiều cao */
+    gap: 10px; /* Khoảng cách giữa các thành phần */
+
+}
+
+.section-title {
+    font-weight: bold;
+}
+
+.radio-group,.survey td label {
+    display: flex;
+    flex-direction: column; /* Xếp các radio button thẳng hàng dọc */
+    gap: 8px; /* Khoảng cách giữa các dòng */
+}
+
+.radio-group label,.checkbox-group label {
+    display: flex;
+    align-items: center; /* Căn nút tròn và chữ thẳng hàng chính giữa */
+    gap: 8px; /* Khoảng cách giữa nút radio và chữ */
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+.section-money{
+    display: flex;
+    gap: 8px;
+}
+
+.survey td{
+    width: 100px;
+
+}
+
+button{
+    max-width: 100px;
+}
