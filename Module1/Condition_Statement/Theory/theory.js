@@ -20,3 +20,23 @@ else console.log("Bạn được xếp hạng yếu");
 let ketqua = "";
 ketqua = (grade > 5)? "Đậu" : "Trượt";
 console.log(ketqua);
+
+// Switch case
+let date = parseInt(prompt("Xin nhập thứ trong tuần"));
+switch (day){
+    case 1: console.log("Đây là chủ nhật");
+    break;
+    case 2: console.log("Đây là thứ hai");
+        break;
+    case 3: console.log("Đây là thứ ba");
+        break;
+    case 4: console.log("Đây là thứ tư");
+        break;
+    case 5: console.log("Đây là thứ năm");
+        break;
+    case 6: console.log("Đây là thứ sau");
+        break;
+    case 7: console.log("Đây là thứ bảy");
+        break;
+    default: console.log("Thứ không hợp lệ");
+}
