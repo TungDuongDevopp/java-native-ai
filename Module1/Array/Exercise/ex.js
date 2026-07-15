@@ -52,7 +52,11 @@ for(let i of nums){
     }
 }
 console.log("Số phần tử chia hết cho 5 là: ",count);
-console.log("Trung bình cộng các số chia hết cho 5: ",sum5 / count);
+if (count > 0) {
+    console.log("Trung bình cộng:", sum5 / count);
+} else {
+    console.log("Không có phần tử nào chia hết cho 5");
+}
 //YC11 Chỉ dùng 1 vòng lặp tìm phần tử lớn thứ 2 của mảng
 let maxValue = Number.MIN_SAFE_INTEGER;
 let secondMax = Number.MIN_SAFE_INTEGER;
