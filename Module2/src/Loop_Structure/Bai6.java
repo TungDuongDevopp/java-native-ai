@@ -10,6 +10,6 @@ public class Bai6 {
             sum+=score;
         }
         System.out.format("Tổng điểm của mảng %s là: %d", Arrays.toString(scores),sum);
-        System.out.format("\nĐiểm trung bình của mảng %s là: %d",Arrays.toString(scores),sum/scores.length);
+        System.out.format("\nĐiểm trung bình của mảng %s là: %d",Arrays.toString(scores),(double)sum/scores.length);
     }
 }
