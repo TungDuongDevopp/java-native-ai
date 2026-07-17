@@ -24,10 +24,11 @@
         for(let number of numbers){
             if(isPrime(number)){
                 console.log(number);
+                sum+=number;
             }
-            sum+=number;
+
         }
-        console.log(`Tổng phần tử trong mảng là: ${sum}`);
+        console.log(`Tổng số nguyên tố trong mảng là: ${sum}`);
         function isPrime(n){
             if(n<2) return false;
             if(n==2) return true;
