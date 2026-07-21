@@ -8,7 +8,7 @@ public class Bai8 {
         int n;
         int count = 0;
         do{
-            n = (int) Validation.getNumber("\nMời nhập số nguyên dương n: ", 0, true);
+            n = Validation.getValidInt("\nMời nhập số nguyên dương n: ", 0);
             if(n>secret){
                 System.out.format("%d lớn hơn số cần tìm thử lại đi!",n);
             }

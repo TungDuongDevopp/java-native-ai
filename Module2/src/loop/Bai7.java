@@ -8,11 +8,11 @@ import java.util.List;
 public class Bai7 {
     public static void main(String[] args) {
         int n;
-        n = (int) Validation.getNumber("Mời nhập số nguyên dương n: ", 0, true);
+        n = Validation.getValidInt("Mời nhập số nguyên dương n: ", 0);
         List<Integer> nums = new ArrayList<>();
         for(int i = 0;i<n;i++){
             System.out.format("\nMời nhập số thứ %d: ",i+1);
-            int num = (int) Validation.getNumber("",true);
+            int num = Validation.getValidInt("");
             nums.add(num);
         }
         int min = nums.get(0);

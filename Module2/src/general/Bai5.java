@@ -3,8 +3,8 @@ import utils.Validation;
 public class Bai5 {
     public static void main(String[] args) {
         int a,b;
-        a = (int) Validation.getNumber("Mời bạn nhập số nguyên a: ",true);
-        b = (int) Validation.getNumber("Mời bạn nhập số nguyên b: ",true);
+        a = Validation.getValidInt("Mời bạn nhập số nguyên a: ");
+        b = Validation.getValidInt("Mời bạn nhập số nguyên b: ");
         String choice;
 
         boolean isRunning = true;
@@ -18,7 +18,7 @@ public class Bai5 {
            System.out.println("|/. Phép chia                |");
            System.out.println("|q. Thoát                    |");
            System.out.println("++++++++++++++++++++++++++++++");
-           choice = Validation.getString("Mời nhập lựa chọn");
+           choice = Validation.getValidString("Mời nhập lựa chọn");
            switch (choice){
                case "+":
                    System.out.format("\nKết quả phép tính %d + %d = %d",a,b,a+b);

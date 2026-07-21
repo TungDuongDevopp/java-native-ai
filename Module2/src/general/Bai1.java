@@ -3,8 +3,8 @@ import utils.Validation;
 public class Bai1 {
     public static void main(String[] args) {
         double width,height,area,perimeter;
-        width =  Validation.getNumber("Mời bạn nhập chiều rộng: ",0,false);
-        height =  Validation.getNumber("Mời bạn nhập chiều cao: ",0,false);
+        width =  Validation.getValidDouble("Mời bạn nhập chiều rộng: ",0);
+        height =  Validation.getValidDouble("Mời bạn nhập chiều cao: ",0);
         area = width*height;
         perimeter = (width+height)*2;
         System.out.format("\n Chu vi hình chữ nhật là: %.2f",perimeter);

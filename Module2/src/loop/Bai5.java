@@ -8,8 +8,8 @@ public class Bai5 {
         int sumEven  = 0;
         int sumOdd = 0;
         do{
-            a = (int) Validation.getNumber("Mời nhập số a: ",0,true);
-            b = (int)Validation.getNumber("Mời nhập số b: ",0,true);
+            a = Validation.getValidInt("Mời nhập số a: ",0);
+            b = Validation.getValidInt("Mời nhập số b: ",0);
         } while(a>=b);
         for(int i = a; i<=b;i++){
            if(isEven(i)) {

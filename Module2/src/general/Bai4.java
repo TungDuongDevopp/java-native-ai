@@ -3,7 +3,7 @@ import utils.Validation;
 public class Bai4 {
     public static void main(String[] args) {
         int day;
-        day = (int) Validation.getNumber("Mời bạn nhập thứ trong ngày: ",0,7,true);
+        day = Validation.getValidInt("Mời bạn nhập thứ trong ngày: ",0,7);
         switch (day){
             case 1:
                 System.out.println("Thứ Hai");

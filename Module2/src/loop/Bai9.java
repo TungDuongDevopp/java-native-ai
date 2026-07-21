@@ -5,7 +5,7 @@ import utils.Validation;
 public class Bai9 {
     public static void main(String[] args) {
         long n;
-        n = (long) Validation.getNumber("Mời nhập số nguyên dương n: ", 0, true);
+        n = Validation.getValidInt("Mời nhập số nguyên dương n: ", 0);
         long gt = 1;
         int i = 1;
         if(n<=1) {

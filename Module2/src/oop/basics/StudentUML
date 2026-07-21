@@ -1,0 +1,15 @@
+┌──────────────────────────────────────────────────────┐
+│                        Student                       │   ← Tên lớp
+├──────────────────────────────────────────────────────│
+│ - name: String                                       │   ← Thuộc tính
+│ - age: int                                           │      (kiểu dữ liệu đặt sau tên)
+│ - scores: double[]                                   │
+├──────────────────────────────────────────────────────┤
+│ +  Student(): Student                                │   ← Constructor mặc định
+│ +  Student(String name,int age,int[] scores): Student│   ← Constructor có tham số
+│ +  getGPA(double []scores): double                      ← Hàm tính điểm trung bình
+│ +  toString(): String                                │   ← Method in thông tin Student
+│ +  getX(): typeOf(X)                                 │   ← Method lấy thông tin biến
+│ +  setX(): typeOf(X)                                 │   ← Method thiết lập thông tin biến
+│ +  isGreaterThan(Student x): boolean                 │   ← Method So sánh điểm
+└──────────────────────────────────────────────────────┘

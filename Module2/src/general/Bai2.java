@@ -4,7 +4,7 @@ import utils.Validation;
 public class Bai2 {
     public static void main(String[] args) {
         int a;
-        a = (int) Validation.getNumber("Mời bạn nhập một số nguyên: ",0,true);
+        a = Validation.getValidInt("Mời bạn nhập một số nguyên: ",0);
         if(a % 2 == 0){
             System.out.format("\nSố %d là số chẵn!",a);
         }

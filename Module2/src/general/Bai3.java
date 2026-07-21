@@ -7,7 +7,7 @@ public class Bai3 {
         double GPA;
         Scanner sc = new Scanner(System.in);
 
-        GPA = Validation.getNumber("Vui lòng nhập GPA(0-10): ",0,10,false);
+        GPA = Validation.getValidDouble("Vui lòng nhập GPA(0-10): ",0,10);
 
         if(GPA >=8.5){
             System.out.println("Bạn xếp loại Giỏi");

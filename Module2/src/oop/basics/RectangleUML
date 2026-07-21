@@ -1,0 +1,14 @@
+┌──────────────────────────────────────────────┐
+│                Rectangle                     │   ← Tên lớp
+├──────────────────────────────────────────────│
+│ - width: int                                 │   ← Thuộc tính
+│ - height: int                                │      (kiểu dữ liệu đặt sau tên)
+├──────────────────────────────────────────────┤
+│ +  Rectangle(): Rectangle                    │   ← Constructor mặc định
+│ +  Rectangle(int width,int height): Rectangle│   ← Constructor có tham số
+│ +  area(): int                               │   ← Method tính diện tích HCN
+│ +  perimeter(): int                          │   ← Method tính chu vi HCN
+│ +  toString(): String                        │   ← Method in thông tin HCN
+│ +  getX(): typeOf(X)                         │   ← Method lấy thông tin biến
+│ +  setX(): typeOf(X)                         │   ← Method thiết lập thông tin biến
+└──────────────────────────────────────────────┘

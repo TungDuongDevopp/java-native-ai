@@ -8,7 +8,7 @@ public class Bai3 {
         int f0 = 0;
         int f1 = 1;
 
-        n = (int) Validation.getNumber("Mời nhập số nguyên n: ", 0, true);
+        n = Validation.getValidInt("Mời nhập số nguyên n: ", 0);
 
         System.out.format("Dãy Fibonacci từ 0 đến %d là: \n", n);
 

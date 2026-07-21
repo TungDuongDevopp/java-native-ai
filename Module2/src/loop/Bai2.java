@@ -5,8 +5,8 @@ public class Bai2 {
         int a,b;
         int count  = 0;
         do{
-            a = (int)Validation.getNumber("Mời nhập số a: ",0,true);
-            b = (int)Validation.getNumber("Mời nhập số b: ",0,true);
+            a = Validation.getValidInt("Mời nhập số a: ",0);
+            b = Validation.getValidInt("Mời nhập số b: ",0);
         } while(a>=b);
         for(int i = a; i<=b;i++){
             if(isPrime(i)){
