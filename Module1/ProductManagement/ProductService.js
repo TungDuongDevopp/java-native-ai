@@ -1,10 +1,28 @@
 
+export default class ProductService {
+    #repository
+    constructor(repository) {
+        this.#repository = repository;
+    }
 
+    getAllProduct() {
+        return this.#repository.getAll();
+    }
 
-function getAllProduct(){}
+    getProductById(id) {
+        return this.#repository.findById(id);
+    }
 
-function saveProduct(){}
+    saveProduct(product) {
+        // Gọi save() để tự sinh id và thêm vào danh sách
+        return this.#repository.save(product);
+    }
 
-function updateProduct(){}
+    deleteProduct(id) {
+        return this.#repository.deleteById(id);
+    }
 
-function deleteProduct(){}
+    updateProduct(product) {
+        return this.#repository.update(product);
+    }
+}
