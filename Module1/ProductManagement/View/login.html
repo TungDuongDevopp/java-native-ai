@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <h1>Login</h1>
+    <div clas="formContainer">
+        <form id ="loginForm">
+            <div class="mb-3">
+                <label>UserName</label>
+                <input
+                        type="text"
+                        id="username"
+                        class="form-control"
+                        placeholder="Nhập username">
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        placeholder="Nhập password">
+            </div>
+            <div class="btn">
+                <button class="btn btn-primary" type="submit" id="btnLogin">
+                    Đăng Nhập
+                </button>
+            </div>
+        <span style="margin-top: 20px; display: block;text-align: center;font-size: 14px">Chưa có tài khoản <a href="signup.html">Đăng ký ngay</a></span>
+
+        </form>
+    </div>
+
+    <script type="module" src="../Controller/auth.js"></script>
+</body>
+</html>

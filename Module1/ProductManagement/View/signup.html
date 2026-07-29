@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="formContainer">
+        <form id="registerForm">
+            <div class="mb-3">
+                <label>UserName</label>
+                <input type="text" id="register-username" class="form-control" placeholder="Nhập username">
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" id="register-password" class="form-control" placeholder="Nhập password">
+            </div>
+            <div class="btn">
+                <button class="btn btn-primary" type="submit" id="btnRegister">
+                    Đăng ký
+                </button>
+            </div>
+            <span style="margin-top: 20px; display: block;text-align: center;font-size: 14px">Đã có tài khoản <a
+                    href="login.html">Đăng nhập ngay</a></span>
+
+        </form>
+    </div>
+
+    <script type="module" src="../Controller/auth.js"></script>
+</body>
+
+</html>

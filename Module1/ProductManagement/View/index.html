@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Quản lý sản phẩm</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-    <h1>Danh sách sản phẩm</h1>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <h1 style="margin:0">Danh sách sản phẩm</h1>
+        <div style="display:flex; align-items:center; gap:12px;">
+            <span id="userDisplay" style="font-weight:bold; color:#555;"></span>
+            <button id="btnLogout" style="background:#e74c3c; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">🚪 Đăng xuất</button>
+        </div>
+    </div>
     <button id="btnAdd">+ Thêm sản phẩm</button>
 
     <div>
@@ -88,6 +94,7 @@
 
     </div>
 
-    <script type="module" src="app.js"></script>
+    <script type="module" src="../Controller/auth.js"></script>
+    <script type="module" src="../Controller/app.js"></script>
 </body>
 </html>
