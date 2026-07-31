@@ -1,6 +1,6 @@
 import ProductRepository from "../Repository/ProductRepository.js";
 import ProductService from "../Service/ProductService.js";
-import ProductView from "../ProductView.js";
+import ProductView from "../View/ProductView.js";
 
 const repository = new ProductRepository();
 const productService = new ProductService(repository);

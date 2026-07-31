@@ -1,0 +1,53 @@
+export default class PetService{
+    #repository
+
+    constructor(repository) {
+       this.#repository = repository;
+    }
+
+    #validate(pet) {
+        if (!pet.name || !pet.name.trim()) {
+            throw new Error("Tên không được để trống");
+        }
+
+        if (!pet.species) {
+            throw new Error("Giống không được để trống");
+        }
+
+        if (!pet.breed || !pet.breed.trim()) {
+            pet.breed = "Loài không rõ!";
+        }
+        if (!pet.gender) {
+            throw new Error("Giới tính không được để trống");
+        }
+        if (!pet.ownerId) {
+            throw new Error("Mã owner không được để trống");
+        }
+    }
+
+    getAllPets() {
+        return this.#repository.findAll();
+    }
+
+    getPetById(id) {
+        return this.#repository.findById(id);
+    }
+
+    getOwnerByOwnerId(ownerId){
+        return this.#repository.findByOwnerId(ownerId);
+    }
+
+    createPet(pet) {
+        this.#validate(pet);
+        this.#repository.save(pet);
+    }
+
+    updatePet(pet) {
+        this.#validate(pet)
+        return this.#repository.update(pet);
+    }
+
+    deletePet(id) {
+        return this.#repository.deleteById(id);
+    }
+}
