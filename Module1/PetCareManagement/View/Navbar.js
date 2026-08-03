@@ -11,6 +11,7 @@ export default class Navbar {
                     <ul class="nav-links">
                         <li><a href="../Owner/index.html" class="nav-link ${activeTab === 'owner' ? 'active' : ''}">Chủ thú cưng</a></li>
                         <li><a href="../Pet/index.html" class="nav-link ${activeTab === 'pet' ? 'active' : ''}">Thú cưng</a></li>
+                        <li><a href="../Health/index.html" class="nav-link ${activeTab === 'record' ? 'active' : ''}">Hồ sơ sức khỏe</a></li>
                     </ul>
                     <div class="user-profile">
                         <div class="avatar-container" id="userMenuBtn">

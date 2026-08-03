@@ -131,9 +131,10 @@ function showOwners(){
 function editOwner(id){
     const owner =  service.getOwnerById(id);
     if(!owner) return;
-    fillForm(owner);
     currentId = id;
     showForm(currentId);
+    fillForm(owner);
+
 }
 
 //Hàm xóa thông tin

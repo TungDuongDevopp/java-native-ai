@@ -55,4 +55,33 @@ export default class Render {
         window.editPet = onEdit;
         window.deletePet = onDelete;
     }
+
+    renderRecord(records, onEdit, onDelete) {
+        let content = "";
+
+        records.forEach(record => {
+            content += `
+                <tr>
+                    <td>${record.id}</td>
+                    <td>${record.petId}</td>
+                    <td>${record.date}</td>
+                    <td>${record.weight}</td>
+                    <td>${record.heartRate}</td>
+                    <td>${record.temperature}</td>
+                    <td>${record.note}</td>
+                    <td>
+                        <div class="btn">
+                            <button class="edit" onclick="editRecord(${record.id})">Sửa</button>
+                            <button class="delete" onclick="deleteRecord(${record.id})">Xóa</button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+
+        document.getElementById("recordTable").innerHTML = content;
+
+        window.editRecord = onEdit;
+        window.deleteRecord = onDelete;
+    }
 }

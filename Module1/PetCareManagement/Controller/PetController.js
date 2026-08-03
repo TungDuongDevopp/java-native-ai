@@ -88,9 +88,10 @@ function showPets(){
 function editPet(id){
     const currentPet = service.getPetById(id);
     if(!currentPet) return;
-    showForm(id);
-    fillForm(currentPet);
     currentId = id;
+    showForm(currentId);
+    fillForm(currentPet);
+
 }
 
 function deletePet(id){
