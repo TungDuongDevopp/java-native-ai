@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý thú cưng</title>
+    <link rel="stylesheet" href="../../../Css/style.css">
+</head>
+<body>
+
+<main class="main-content">
+    <div style="display:flex; justify-content:space-between; align-items:center; width: 100%; margin-bottom:10px;">
+        <h1 style="margin:0">Danh sách Thú cưng</h1>
+        <button id="btnAdd">+ Thêm thú cưng</button>
+    </div>
+
+    <div style="width: 100%;">
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th style="width: 180px;">OwnerId</th>
+                <th>Name</th>
+                <th style="width: 200px;">Species</th>
+                <th style="width: 300px;">Breed</th>
+                <th>Gender</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody id="petTable">
+            </tbody>
+        </table>
+    </div>
+
+    <!--Form phục vụ việc update, create pets-->
+    <div id="formContainer" class="card p-3 mb-3" style="display:none;">
+
+        <h4 id="formTitle"></h4>
+
+        <form id="petForm">
+
+            <div class="mb-3">
+                <label>Mã chủ thú cưng</label>
+                <select name="ownerId" id="ownerId" class="form-control" required>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Tên thú cưng</label>
+                <input
+                        type="text"
+                        id="name"
+                        class="form-control"
+                        placeholder="Nhập tên thú cưng" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Giống loài</label>
+                <input
+                        type="text"
+                        id="species"
+                        class="form-control"
+                        placeholder="Nhập giống loài" required>
+            </div>
+            <div class="mb-3">
+                <label>Loài</label>
+                <input
+                        type="text"
+                        id="breed"
+                        class="form-control"
+                        placeholder="Nhập loài">
+            </div>
+
+
+            <div class="mb-3 box">
+                <label>Giới tính</label>
+                <div class ="boxGender">
+                    <input type="radio" id="male" name="gender" value="Male">
+                    <label for="male">Đực</label>
+                </div>
+                <div class="boxGender">
+                    <input type="radio" id="female" name="gender" value="Female">
+                    <label for="female">Cái</label>
+                </div>
+
+            </div>
+
+            <div class="btn">
+                <button class="btn btn-primary" type="submit">
+                    Lưu
+                </button>
+
+                <button
+                        id="btnCancel"
+                        type="button"
+                        class="btn btn-secondary">
+                    Hủy
+                </button>
+            </div>
+
+
+        </form>
+
+    </div>
+</main>
+
+<script type="module" src="../../Controller/PetController.js"></script>
+</body>
+</html>

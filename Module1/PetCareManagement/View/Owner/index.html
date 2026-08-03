@@ -2,95 +2,95 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Quản lý sản phẩm</title>
+    <title>Quản lý chủ thú cưng</title>
     <link rel="stylesheet" href="../../../Css/style.css">
 </head>
 <body>
 
-<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-    <h1 style="margin:0">Danh sách Chủ thú cưng</h1>
+<main class="main-content">
+    <div style="display:flex; justify-content:space-between; align-items:center; width: 100%; margin-bottom:10px;">
+        <h1 style="margin:0">Danh sách Chủ thú cưng</h1>
+        <button id="btnAdd">+ Thêm thông tin chủ thú cưng</button>
+    </div>
 
-</div>
-<button id="btnAdd">+ Thêm thông tin chủ thú cưng</button>
+    <div style="width: 100%;">
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th style="width: 180px;">Name</th>
+                <th>Phone</th>
+                <th style="width: 200px;">Email</th>
+                <th style="width: 300px;">Address</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody id="ownerTable">
+            </tbody>
+        </table>
+    </div>
 
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th style="width: 180px;">Name</th>
-            <th>Phone</th>
-            <th style="width: 200px;">Email</th>
-            <th style="width: 300px;">Address</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody id="ownerTable">
-        </tbody>
-    </table>
-</div>
+    <!--Form phục vụ việc update, create owners-->
+    <div id="formContainer" class="card p-3 mb-3" style="display:none;">
 
-<!--Form phục vụ việc update, create owners-->
-<div id="formContainer" class="card p-3 mb-3" style="display:none;">
+        <h4 id="formTitle"></h4>
 
-    <h4 id="formTitle"></h4>
+        <form id="ownerForm">
 
-    <form id="ownerForm">
+            <div class="mb-3">
+                <label>Tên chủ thú cưng</label>
+                <input
+                        type="text"
+                        id="name"
+                        class="form-control"
+                        placeholder="Nhập chủ thú cưng" required>
+            </div>
 
-        <div class="mb-3">
-            <label>Tên chủ thú cưng</label>
-            <input
-                    type="text"
-                    id="name"
-                    class="form-control"
-                    placeholder="Nhập chủ thú cưng" required>
-        </div>
+            <div class="mb-3">
+                <label>Phone</label>
+                <input
+                        type="text"
+                        id="phone"
+                        class="form-control"
+                        placeholder="Nhập số điện thoại" required>
+            </div>
 
-        <div class="mb-3">
-            <label>Phone</label>
-            <input
-                    type="text"
-                    id="phone"
-                    class="form-control"
-                    placeholder="Nhập số điện thoại" required>
-        </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input
+                        type="email"
+                        id="email"
+                        class="form-control"
+                        placeholder="Nhập Email" required>
+            </div>
+            <div class="mb-3">
+                <label>Địa chỉ</label>
+                <input
+                        id="address"
+                        class="form-control"
+                        placeholder="Nhập địa chỉ"
+                >
+            </div>
 
-        <div class="mb-3">
-            <label>Email</label>
-            <input
-                    type="email"
-                    id="email"
-                    class="form-control"
-                    placeholder="Nhập Email" required>
-        </div>
-        <div class="mb-3">
-            <label>Địa chỉ</label>
-            <input
-                    id="address"
-                    class="form-control"
-                    placeholder="Nhập địa chỉ"
-            >
-        </div>
+            <div class="btn">
+                <button class="btn btn-primary" type="submit">
+                    Lưu
+                </button>
 
-        <div class="btn">
-            <button class="btn btn-primary" type="submit">
-                Lưu
-            </button>
-
-            <button
-                    id="btnCancel"
-                    type="button"
-                    class="btn btn-secondary">
-                Hủy
-            </button>
-        </div>
+                <button
+                        id="btnCancel"
+                        type="button"
+                        class="btn btn-secondary">
+                    Hủy
+                </button>
+            </div>
 
 
-    </form>
+        </form>
 
-</div>
-
+    </div>
+</main>
 
 <script type="module" src="../../Controller/OwnerController.js"></script>
 </body>
-</html>
+</html>

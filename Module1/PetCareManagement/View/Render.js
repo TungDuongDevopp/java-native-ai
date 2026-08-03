@@ -24,8 +24,35 @@ export default class Render {
 
         document.getElementById("ownerTable").innerHTML = content;
 
-        // Gán các hàm xử lý vào window để onclick trong HTML gọi được
         window.editOwner = onEdit;
         window.deleteOwner = onDelete;
+    }
+
+    renderPet(pets, onEdit, onDelete) {
+        let content = "";
+
+        pets.forEach(pet => {
+            content += `
+                <tr>
+                    <td>${pet.id}</td>
+                    <td>${pet.ownerId}</td>
+                    <td>${pet.name}</td>
+                    <td>${pet.species}</td>
+                    <td>${pet.breed}</td>
+                    <td>${pet.gender}</td>
+                    <td>
+                        <div class="btn">
+                            <button class="edit" onclick="editPet(${pet.id})">Sửa</button>
+                            <button class="delete" onclick="deletePet(${pet.id})">Xóa</button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+
+        document.getElementById("petTable").innerHTML = content;
+
+        window.editPet = onEdit;
+        window.deletePet = onDelete;
     }
 }
