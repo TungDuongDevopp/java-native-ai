@@ -135,5 +135,17 @@ export default class HealthRepository{
         this.saveAll(newRecords);
         return true;
     }
+    deteteAllByPetId(petId){
+        const records = this.findAll();
+        const newRecords = records.filter(
+            x => Number(x.petId) !== Number(petId)
+        );
+        if(records.length === newRecords.length){
+            return false;
+        }
+        this.saveAll(newRecords);
+        return true;
+    }
+
 }
 

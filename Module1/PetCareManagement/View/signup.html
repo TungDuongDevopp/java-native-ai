@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Pet Care Management</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../Css/style.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-wrapper">
+        <div class="formAuth">
+            <div class="auth-header">
+                <div class="brand-badge">
+                    <i class="fa-solid fa-paw"></i>
+                </div>
+                <h2>Pet Care</h2>
+                <p class="auth-subtitle">Tạo tài khoản mới để bắt đầu</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="mb-3 input-field-wrapper">
+                    <label for="register-username">Tên đăng nhập</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-user input-icon"></i>
+                        <input
+                            type="text"
+                            id="register-username"
+                            class="form-control"
+                            placeholder="Nhập username (tối thiểu 4 ký tự)..."
+                            required
+                            autocomplete="username"
+                        >
+                    </div>
+                </div>
+
+                <div class="mb-3 input-field-wrapper">
+                    <label for="register-password">Mật khẩu</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input
+                            type="password"
+                            id="register-password"
+                            class="form-control"
+                            placeholder="Nhập password (tối thiểu 6 ký tự)..."
+                            required
+                            autocomplete="new-password"
+                        >
+                        <i class="fa-solid fa-eye toggle-password" id="toggleRegisterPassword" title="Hiện/ẩn mật khẩu"></i>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <button class="btn btn-primary btn-auth" type="submit" id="btnRegister">
+                        <i class="fa-solid fa-user-plus"></i> Đăng Ký
+                    </button>
+                </div>
+
+                <div class="auth-footer">
+                    <span>Đã có tài khoản? <a href="login.html" class="auth-link">Đăng nhập ngay</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="../Controller/AuthController.js"></script>
+    <script>
+        const togglePassword = document.getElementById('toggleRegisterPassword');
+        const passwordInput = document.getElementById('register-password');
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function () {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        }
+    </script>
+</body>
+</html>

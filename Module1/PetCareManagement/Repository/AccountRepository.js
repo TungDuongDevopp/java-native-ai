@@ -1,3 +1,4 @@
+
 if (!localStorage.getItem("accounts")) {
     const defaultAccounts = [
         {
@@ -39,13 +40,16 @@ export default class AccountRepository{
     }
 
     findById(id) {
-        return this.getAll().find(p => p.id == id);
+        return this.getAll().find(p => p.id === id);
     }
 
     deleteById(id) {
-        const accounts = this.getAll().filter(p => p.id != id);
+        const accounts = this.getAll().filter(p => p.id !== id);
         this.saveAll(accounts);
     }
 
+    findByUserName(username){
+        return this.getAll().find(u=>u.username === username)
+    }
 
 }

@@ -1,8 +1,10 @@
 export default class PetService{
     #repository
+    #heathService
 
-    constructor(repository) {
+    constructor(repository,service) {
        this.#repository = repository;
+       this.#heathService = service;
     }
 
     #validate(pet) {
@@ -48,6 +50,7 @@ export default class PetService{
     }
 
     deletePet(id) {
+        this.#heathService.deleteAllRecordByPetId(id);
         return this.#repository.deleteById(id);
     }
 }

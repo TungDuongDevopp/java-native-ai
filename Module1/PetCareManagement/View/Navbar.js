@@ -1,9 +1,26 @@
 export default class Navbar {
     /**
-     * Tự động tạo và chèn Navbar vào trang web.
-     * @param {string} activeTab - Tên tab đang kích hoạt ('owner' | 'pet')
+     * Tự động tạo và chèn Navbar vào trang web & kiểm tra Authentication (Auth Guard).
+     * @param {string} activeTab - Tên tab đang kích hoạt ('owner' | 'pet' | 'record')
      */
     static render(activeTab = '') {
+        // ========== Auth Guard: Kiểm tra đăng nhập ==========
+        const loggedInUserRaw = localStorage.getItem("loggedInUser");
+        if (!loggedInUserRaw) {
+            alert("Bạn chưa đăng nhập! Vui lòng đăng nhập để sử dụng hệ thống PetCare.");
+            window.location.href = "../login.html";
+            return;
+        }
+
+        let user = { username: "User" };
+        try {
+            user = JSON.parse(loggedInUserRaw);
+        } catch (e) {
+            console.error("Lỗi đọc thông tin đăng nhập:", e);
+        }
+
+        const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.username)}&background=2e7d32&color=fff&bold=true`;
+
         const navHtml = `
             <nav class="navbar">
                 <div class="nav-container">
@@ -15,10 +32,10 @@ export default class Navbar {
                     </ul>
                     <div class="user-profile">
                         <div class="avatar-container" id="userMenuBtn">
-                            <img src="https://ui-avatars.com/api/?name=Admin+User&background=2e7d32&color=fff" alt="Avatar" class="avatar-img">
+                            <img src="${avatarUrl}" alt="Avatar" class="avatar-img">
                             <div class="user-info">
-                                <span class="user-name">Admin</span>
-                                <span class="user-role">Quản trị viên</span>
+                                <span class="user-name">${user.username}</span>
+                                <span class="user-role">Thành viên</span>
                             </div>
                             <span class="dropdown-icon">▼</span>
                         </div>
@@ -57,18 +74,20 @@ export default class Navbar {
         }
 
         const btnLogout = document.getElementById("btnLogout");
-        const btnChangePass = document.getElementById("btnChangePassword");
-
         if (btnLogout) {
             btnLogout.addEventListener("click", (e) => {
                 e.preventDefault();
-                alert("Đã đăng xuất! (Chức năng demo)");
+                localStorage.removeItem("loggedInUser");
+                alert("Đăng xuất thành công!");
+                window.location.href = "../login.html";
             });
         }
+
+        const btnChangePass = document.getElementById("btnChangePassword");
         if (btnChangePass) {
             btnChangePass.addEventListener("click", (e) => {
                 e.preventDefault();
-                alert("Chức năng đổi mật khẩu (Demo)");
+                alert("Chức năng đổi mật khẩu đang được phát triển!");
             });
         }
     }

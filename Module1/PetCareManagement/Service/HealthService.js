@@ -44,5 +44,8 @@ export default class HealthService{
     deleteRecordById(id){
         return this.#repository.deleteById(id);
     }
+    deleteAllRecordByPetId(petId){
+        return this.#repository.deteteAllByPetId(petId);
+    }
 
 }

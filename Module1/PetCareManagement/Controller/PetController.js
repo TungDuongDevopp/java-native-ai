@@ -4,12 +4,15 @@ import Render from "../View/Render.js";
 import OwnerRepository from "../Repository/OwnerRepository.js";
 import OwnerService from "../Service/OwnerService.js";
 import Navbar from "../View/Navbar.js";
+import HealthRepository from "../Repository/HealthRepository.js";
+import HealthService from "../Service/HealthService.js";
 
 // Khởi tạo Navbar cho trang Thú cưng
 Navbar.render("pet");
-
+const healthRepository = new HealthRepository();
+const healthService = new HealthService(healthRepository);
 const repository = new PetRepository();
-const service = new PetService(repository);
+const service = new PetService(repository,healthService);
 const ownerRepository = new OwnerRepository();
 const ownerService = new OwnerService(ownerRepository);
 const render = new Render();
@@ -97,7 +100,7 @@ function editPet(id){
 function deletePet(id){
     const currentPet = service.getPetById(id);
     if(!currentPet) return;
-    const confirmed = confirm("Bạn có muốn xóa không ?");
+    const confirmed = confirm("Nếu xóa sẽ mất hết bản ghi sức khỏe pet đó, vẫn tiếp tục?");
     if(!confirmed) return;
     service.deletePet(id);
     alert("Xóa pet thành công");
