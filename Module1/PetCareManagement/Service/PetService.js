@@ -39,6 +39,10 @@ export default class PetService {
         return this.#repository.findByOwnerId(ownerId);
     }
 
+    getOwnersByOwnerId(ownerId){
+        return this.#repository.findAllByOwnerId(ownerId);
+    }
+
     createPet(pet) {
         this.#validate(pet);
         this.#repository.save(pet);
@@ -60,7 +64,7 @@ export default class PetService {
         const cleanKey = keyword.trim().toLowerCase();
         const ownerId = Number(cleanKey);
         if (!isNaN(ownerId) && Number.isInteger(ownerId)) {
-            return this.getOwnerByOwnerId(ownerId);
+            return this.getOwnersByOwnerId(ownerId);
         }
 
         return this.getAllPets().filter(pet =>

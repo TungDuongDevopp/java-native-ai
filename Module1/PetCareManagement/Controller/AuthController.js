@@ -22,6 +22,7 @@ const loginPassword = document.getElementById("password");
 //Phần tử dom ô input form đăng ký
 const signupUsername = document.getElementById("register-username");
 const signupPassword = document.getElementById("register-password");
+
 // ========== Xử lý ĐĂNG NHẬP ==========
 if (isLoginPage) {
     // Nếu đã đăng nhập rồi thì redirect sang trang quản lý

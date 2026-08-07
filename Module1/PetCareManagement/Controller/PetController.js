@@ -33,16 +33,12 @@ const formTitle = document.getElementById("formTitle");
 const formContainer = document.getElementById("formContainer");
 const petForm = document.getElementById("petForm");
 
-
+//================================= HÀM TIỆN ÍCH ==========================================================
 function handleSearch() {
     const keyword = searchInput.value;
     const searchResults = service.searchPets(keyword);
     render.renderPet(searchResults, editPet, deletePet);
 }
-
-
-
-let currentId = null;
 
 // Hàm nạp danh sách Owner ID vào dropdown select
 function loadOwnerOptions(){
@@ -60,7 +56,9 @@ function getSelectedGender(){
     return selected ? selected.value : "";
 }
 
+
 //================================== HÀM THAO TÁC VS FORM (Do chung 1 form)====================================
+let currentId = null;
 function showForm(id){
     loadOwnerOptions();
     if(id == null){

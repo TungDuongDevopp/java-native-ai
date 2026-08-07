@@ -36,6 +36,7 @@ const btnAdd = document.getElementById("btnAdd");
 const btnCancel = document.getElementById("btnCancel");
 const btnSearch = document.getElementById("btnSearch");
 
+//================================= HÀM TIỆN ÍCH ==========================================================
 //Hàm tìm kiếm
 function handleSearch() {
     const keyword = searchInput.value;
@@ -43,10 +44,7 @@ function handleSearch() {
     render.renderOwner(searchResults, editOwner, deleteOwner);
 }
 
-// Bắt sự kiện click nút tìm kiếm
-btnSearch.addEventListener("click", handleSearch);
-// Bắt sự kiện người dùng nhập vào ô input
-searchInput.addEventListener("input", handleSearch);
+
 //================================== HÀM THAO TÁC VS FORM (Do chung 1 form)====================================
 
 let currentId = null; // Khởi tạo biến id hiện tại, nếu null là thêm mới và khác null là sửa
@@ -131,6 +129,11 @@ ownerForm.addEventListener("submit", (event) => {
         }
     }
 })
+// Bắt sự kiện click nút tìm kiếm
+btnSearch.addEventListener("click", handleSearch);
+
+// Bắt sự kiện người dùng nhập vào ô input
+searchInput.addEventListener("input", handleSearch);
 
 //================================== CÁC HÀM THAO TÁC DỮ LIỆU VS HỆ THỐNG ============================================
 

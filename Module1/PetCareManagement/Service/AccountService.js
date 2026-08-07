@@ -5,7 +5,8 @@ export default class AccountService{
         this.#repository = repository;
     }
 
-       #validationSignUp(account){
+
+    #validationSignUp(account){
         if(!account.username || !account.username.trim()){
             throw new Error("Username không được trống");
         }
@@ -22,6 +23,7 @@ export default class AccountService{
             throw new Error("Username đã tồn tại, vui lòng đặt lại")
         }
     }
+
     #validationLogin(username,password){
         if(!username || !username.trim()){
             throw new Error("Username không được trống");
@@ -43,15 +45,19 @@ export default class AccountService{
         return this.#repository.findById(id);
     }
 
+    deleteAccountById(id){
+        return this.#repository.deleteById(id);
+    }
+
     saveAccount(account){
         this.#validationSignUp(account);
         return this.#repository.save(account);
     }
 
-    deleteAccountById(id){
-        return this.#repository.deleteById(id);
-    }
 
+    updateAccount(account){
+        return this.#repository.update(account);
+    }
 
     login(username, password){
         this.#validationLogin(username,password)
@@ -61,6 +67,11 @@ export default class AccountService{
         return account;
 
     }
+    changePassword(username,password){
+
+
+    }
+
 
 
 

@@ -1,24 +1,17 @@
 export default class Navbar {
-    /**
-     * Tự động tạo và chèn Navbar vào trang web & kiểm tra Authentication (Auth Guard).
-     * @param {string} activeTab - Tên tab đang kích hoạt ('owner' | 'pet' | 'record')
-     */
+
     static render(activeTab = '') {
-        // ========== Auth Guard: Kiểm tra đăng nhập ==========
-        const loggedInUserRaw = localStorage.getItem("loggedInUser");
-        if (!loggedInUserRaw) {
+
+       // Kiểm tra xem đã đăng nhập chưa
+        const loggedInUser = localStorage.getItem("loggedInUser");
+
+        if (!loggedInUser) {
             alert("Bạn chưa đăng nhập! Vui lòng đăng nhập để sử dụng hệ thống PetCare.");
             window.location.href = "../login.html";
             return;
         }
 
-        let user = { username: "User" };
-        try {
-            user = JSON.parse(loggedInUserRaw);
-        } catch (e) {
-            console.error("Lỗi đọc thông tin đăng nhập:", e);
-        }
-
+        let user = JSON.parse(loggedInUser);
         const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.username)}&background=2e7d32&color=fff&bold=true`;
 
         const navHtml = `
@@ -52,7 +45,6 @@ export default class Navbar {
         // Chèn navbar vào vị trí đầu tiên của <body>
         document.body.insertAdjacentHTML('afterbegin', navHtml);
 
-        // Đăng ký các sự kiện tương tác cho Dropdown User Profile
         this.#initEvents();
     }
 

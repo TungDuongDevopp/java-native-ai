@@ -48,8 +48,18 @@ export default class AccountRepository{
         this.saveAll(accounts);
     }
 
+    update(account){
+        const accounts = this.getAll();
+        const index = accounts.findIndex(x=> Number(x.id) === account.id);
+        if(index !== -1){
+            accounts[index] = account;
+            this.saveAll(accounts);
+        }
+    }
+
     findByUserName(username){
         return this.getAll().find(u=>u.username === username)
     }
+
 
 }

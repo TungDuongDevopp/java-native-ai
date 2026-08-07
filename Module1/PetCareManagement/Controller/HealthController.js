@@ -35,6 +35,7 @@ const formTitle = document.getElementById("formTitle");
 const formContainer = document.getElementById("formContainer");
 const recordForm = document.getElementById("recordForm");
 
+//================================= HÀM TIỆN ÍCH ==========================================================
 function handleSearch() {
     const keyword = searchInput.value;
     const searchResults = service.searchRecords(keyword);
