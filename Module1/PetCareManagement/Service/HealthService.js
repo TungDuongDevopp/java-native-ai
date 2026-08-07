@@ -61,7 +61,7 @@ export default class HealthService{
             }
         }
 
-        return this.#repository.findAll().filter(record =>
+        return this.getAllRecords().filter(record =>
             record.note.toLowerCase().includes(cleanKey) ||
             record.date.toLowerCase().includes(cleanKey)
         );

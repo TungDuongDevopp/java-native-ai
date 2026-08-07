@@ -63,7 +63,7 @@ export default class PetService {
             return this.getOwnerByOwnerId(ownerId);
         }
 
-        return this.#repository.findAll().filter(pet =>
+        return this.getAllPets().filter(pet =>
             pet.name.toLowerCase().includes(cleanKey) ||
             pet.breed.toLowerCase().includes(cleanKey) ||
             pet.species.toLowerCase().includes(cleanKey)

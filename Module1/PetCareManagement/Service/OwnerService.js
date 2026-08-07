@@ -89,7 +89,7 @@ export default class OwnerService {
         }
         const cleanKey = keyword.trim().toLowerCase();
 
-        return this.#repository.findAll().filter(owner =>
+        return this.getAllOwners().filter(owner =>
             owner.name.toLowerCase().includes(cleanKey) ||
             owner.phone.includes(cleanKey) ||
             owner.email.toLowerCase().includes(cleanKey)
