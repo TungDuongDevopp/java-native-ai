@@ -2,7 +2,7 @@ export default class OwnerService {
     #repository;
     #petService;
 
-    constructor(repository,petService) {
+    constructor(repository, petService) {
         this.#repository = repository;
         this.#petService = petService;
     }
@@ -60,7 +60,7 @@ export default class OwnerService {
         return this.#repository.findAll();
     }
 
-    getOwnerById(id){
+    getOwnerById(id) {
         return this.#repository.findById(id);
     }
 
@@ -77,11 +77,23 @@ export default class OwnerService {
     }
 
     deleteOwner(id) {
-        if(this.#petService.getOwnerByOwnerId(id)){
+        if (this.#petService.getOwnerByOwnerId(id)) {
             throw new Error("Không thể xóa do vẫn còn thú cưng");
         }
         return this.#repository.deleteById(id);
     }
 
+    searchOwners(keyword) {
+        if (!keyword) {
+            return this.getAllOwners();
+        }
+        const cleanKey = keyword.trim().toLowerCase();
+
+        return this.#repository.findAll().filter(owner =>
+            owner.name.toLowerCase().includes(cleanKey) ||
+            owner.phone.includes(cleanKey) ||
+            owner.email.toLowerCase().includes(cleanKey)
+        );
+    }
 
 }

@@ -13,51 +13,64 @@ Navbar.render("owner");
 const repository = new OwnerRepository();
 const petRepository = new PetRepository();
 const petService = new PetService(petRepository);
-const service = new OwnerService(repository,petService);
+const service = new OwnerService(repository, petService);
 const render = new Render();
 
 
 //========== KHỞI TẠO CÁC PHẦN TỬ DOM (Khởi tạo bằng hằng số tránh khởi tạo nhiều ==========
 
-    // Các phần tử Dom của table và form
-    const formTitle = document.getElementById("formTitle");
-    const formContainer = document.getElementById("formContainer");
-    const ownerForm = document.getElementById("ownerForm");
+// Các phần tử Dom của table và form
+const formTitle = document.getElementById("formTitle");
+const formContainer = document.getElementById("formContainer");
+const ownerForm = document.getElementById("ownerForm");
 
-    // Các phần tử Dom của các ô input
-    const name= document.getElementById("name");
-    const phone = document.getElementById("phone");
-    const email = document.getElementById("email");
-    const address = document.getElementById("address");
+// Các phần tử Dom của các ô input
+const name = document.getElementById("name");
+const phone = document.getElementById("phone");
+const email = document.getElementById("email");
+const address = document.getElementById("address");
+const searchInput = document.getElementById("searchInput");
 
-    // Các phần tử Dom của các ô button
-    const btnAdd = document.getElementById("btnAdd");
-    const btnCancel = document.getElementById("btnCancel");
+// Các phần tử Dom của các ô button
+const btnAdd = document.getElementById("btnAdd");
+const btnCancel = document.getElementById("btnCancel");
+const btnSearch = document.getElementById("btnSearch");
 
+//Hàm tìm kiếm
+function handleSearch() {
+    const keyword = searchInput.value;
+    const searchResults = service.searchOwners(keyword);
+    render.renderOwner(searchResults, editOwner, deleteOwner);
+}
+
+// Bắt sự kiện click nút tìm kiếm
+btnSearch.addEventListener("click", handleSearch);
+// Bắt sự kiện người dùng nhập vào ô input
+searchInput.addEventListener("input", handleSearch);
 //================================== HÀM THAO TÁC VS FORM (Do chung 1 form)====================================
 
 let currentId = null; // Khởi tạo biến id hiện tại, nếu null là thêm mới và khác null là sửa
 
-function showForm(id){
-    if(id == null){
+function showForm(id) {
+    if (id == null) {
         formTitle.innerText = "Thêm thông tin";
     }
-    else{
+    else {
         formTitle.innerText = "Sửa thông tin";
 
     }
-    formContainer.style.display="block";
+    formContainer.style.display = "block";
 
 }
 
-function hideForm(){
-    formContainer.style.display= "none";
+function hideForm() {
+    formContainer.style.display = "none";
     ownerForm.reset();
     currentId = null;
 }
 
-function fillForm(owner){
-    name.value =  owner.name;
+function fillForm(owner) {
+    name.value = owner.name;
     phone.value = owner.phone;
     email.value = owner.email;
     address.value = owner.address;
@@ -79,10 +92,10 @@ btnCancel.addEventListener("click", () => {
 });
 
 //=============Xử lý khi người dùng submit form
-ownerForm.addEventListener("submit",(event)=>{
+ownerForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    if(currentId == null){
+    if (currentId == null) {
         const newOwner = {
             name: name.value.trim(),
             phone: phone.value.trim(),
@@ -95,11 +108,11 @@ ownerForm.addEventListener("submit",(event)=>{
             hideForm();
             showOwners();
         }
-        catch (err){
+        catch (err) {
             alert(err.message);
         }
     }
-    else{
+    else {
         const updateOwner = {
             id: Number(currentId),
             name: name.value.trim(),
@@ -113,7 +126,7 @@ ownerForm.addEventListener("submit",(event)=>{
             hideForm();
             showOwners();
         }
-        catch (err){
+        catch (err) {
             alert(err.message);
         }
     }
@@ -122,15 +135,15 @@ ownerForm.addEventListener("submit",(event)=>{
 //================================== CÁC HÀM THAO TÁC DỮ LIỆU VS HỆ THỐNG ============================================
 
 //Hàm hiện thông tin
-function showOwners(){
+function showOwners() {
     const owners = service.getAllOwners();
-    render.renderOwner(owners,editOwner,deleteOwner);
+    render.renderOwner(owners, editOwner, deleteOwner);
 }
 
 //Hàm sửa thông tin
-function editOwner(id){
-    const owner =  service.getOwnerById(id);
-    if(!owner) return;
+function editOwner(id) {
+    const owner = service.getOwnerById(id);
+    if (!owner) return;
     currentId = id;
     showForm(currentId);
     fillForm(owner);
@@ -138,17 +151,17 @@ function editOwner(id){
 }
 
 //Hàm xóa thông tin
-function deleteOwner(id){
-    const owner =  service.getOwnerById(id);
-    if(!owner) return;
+function deleteOwner(id) {
+    const owner = service.getOwnerById(id);
+    if (!owner) return;
     const confirmed = confirm("Bạn có muốn xóa không?");
-    if(!confirmed) return;
-    try{
+    if (!confirmed) return;
+    try {
         service.deleteOwner(id);
         alert("Xóa thành công");
         showOwners();
     }
-    catch (err){
+    catch (err) {
         alert(err.message);
     }
 

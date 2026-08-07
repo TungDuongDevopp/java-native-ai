@@ -56,7 +56,7 @@ export default class PetRepository{
     }
 
     findByOwnerId(ownerId){
-        return this.findAll().find(x => Number(x.ownerId) === Number(ownerId));
+        return this.findAll().filter(x => Number(x.ownerId) === Number(ownerId));
     }
 
     save(pet){

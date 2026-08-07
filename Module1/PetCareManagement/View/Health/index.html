@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Quản lý sức khỏe thú cưng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../../Css/style.css">
 </head>
 <body>
@@ -11,6 +12,22 @@
     <div style="display:flex; justify-content:space-between; align-items:center; width: 100%; margin-bottom:10px;">
         <h1 style="margin:0">Danh sách Sức khỏe thú cưng</h1>
         <button id="btnAdd">+ Thêm thông tin sức khỏe thú cưng</button>
+    </div>
+
+    <!-- Thanh tìm kiếm (Search Bar) -->
+    <div class="search-bar-container">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Nhập từ khóa tìm kiếm hồ sơ sức khỏe..."
+            >
+            <button type="button" id="btnSearch" class="btn-search">
+                <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+            </button>
+        </div>
     </div>
 
     <div style="width: 100%;">

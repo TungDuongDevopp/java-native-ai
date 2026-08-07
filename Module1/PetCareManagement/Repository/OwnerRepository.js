@@ -47,9 +47,11 @@ if (!localStorage.getItem("owners")) {
     findAll(){
         return JSON.parse(localStorage.getItem("owners"))||[];
     }
+
     findById(id){
         return this.findAll().find(x => Number(x.id) === Number(id));
     }
+
     save(owner){
         const owners = this.findAll();
         const maxId = owners.reduce((max,x)=>Math.max(Number(x.id),max),0);
@@ -61,6 +63,7 @@ if (!localStorage.getItem("owners")) {
     saveAll(owners){
         localStorage.setItem("owners",JSON.stringify(owners));
     }
+
     deleteById(id){
         const owners = this.findAll();
         const newOwners = owners.filter(x => Number(x.id) !== Number(id));

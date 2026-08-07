@@ -1,10 +1,10 @@
-export default class PetService{
+export default class PetService {
     #repository
     #heathService
 
-    constructor(repository,service) {
-       this.#repository = repository;
-       this.#heathService = service;
+    constructor(repository, service) {
+        this.#repository = repository;
+        this.#heathService = service;
     }
 
     #validate(pet) {
@@ -35,7 +35,7 @@ export default class PetService{
         return this.#repository.findById(id);
     }
 
-    getOwnerByOwnerId(ownerId){
+    getOwnerByOwnerId(ownerId) {
         return this.#repository.findByOwnerId(ownerId);
     }
 
@@ -52,5 +52,21 @@ export default class PetService{
     deletePet(id) {
         this.#heathService.deleteAllRecordByPetId(id);
         return this.#repository.deleteById(id);
+    }
+    searchPets(keyword) {
+        if (!keyword || !keyword.trim()) {
+            return this.getAllPets();
+        }
+        const cleanKey = keyword.trim().toLowerCase();
+        const ownerId = Number(cleanKey);
+        if (!isNaN(ownerId) && Number.isInteger(ownerId)) {
+            return this.getOwnerByOwnerId(ownerId);
+        }
+
+        return this.#repository.findAll().filter(pet =>
+            pet.name.toLowerCase().includes(cleanKey) ||
+            pet.breed.toLowerCase().includes(cleanKey) ||
+            pet.species.toLowerCase().includes(cleanKey)
+        );
     }
 }

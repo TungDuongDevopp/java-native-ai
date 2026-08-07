@@ -23,15 +23,24 @@ const ownerId = document.getElementById("ownerId");
 const name = document.getElementById("name");
 const species = document.getElementById("species");
 const breed = document.getElementById("breed");
-
+const searchInput = document.getElementById("searchInput");
 // Các phần tử Dom của các ô button
 const btnAdd = document.getElementById("btnAdd");
 const btnCancel = document.getElementById("btnCancel");
-
+const btnSearch = document.getElementById("btnSearch");
 // Các phần tử Dom của table và form
 const formTitle = document.getElementById("formTitle");
 const formContainer = document.getElementById("formContainer");
 const petForm = document.getElementById("petForm");
+
+
+function handleSearch() {
+    const keyword = searchInput.value;
+    const searchResults = service.searchPets(keyword);
+    render.renderPet(searchResults, editPet, deletePet);
+}
+
+
 
 let currentId = null;
 
@@ -164,6 +173,10 @@ petForm.addEventListener("submit",ev => {
     }
 });
 
+// Bắt sự kiện click nút tìm kiếm
+btnSearch.addEventListener("click", handleSearch);
+//Bắt sự kiện người dùng nhập vào ô input
+searchInput.addEventListener("input", handleSearch);
 
 //=======================================Khởi chạy hàm ban đầu=================================================
 showPets();

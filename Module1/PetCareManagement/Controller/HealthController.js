@@ -19,6 +19,7 @@ const petService = new PetService(petRepository);
 // Các phần tử Dom của các ô button
 const btnAdd = document.getElementById("btnAdd");
 const btnCancel = document.getElementById("btnCancel");
+const btnSearch = document.getElementById("btnSearch");
 
 // Các phần tử Dom của các ô input
 const petId = document.getElementById("petId");
@@ -27,12 +28,18 @@ const weight = document.getElementById("weight");
 const heartRate = document.getElementById("heartRate");
 const temperature = document.getElementById("temperature");
 const note = document.getElementById("note");
+const searchInput = document.getElementById("searchInput");
 
 // Các phần tử Dom của table và form
 const formTitle = document.getElementById("formTitle");
 const formContainer = document.getElementById("formContainer");
 const recordForm = document.getElementById("recordForm");
 
+function handleSearch() {
+    const keyword = searchInput.value;
+    const searchResults = service.searchRecords(keyword);
+    render.renderRecord(searchResults, editRecord, deleteRecord);
+}
 
 function loadPetOptions(){
     const pets = petService.getAllPets();
@@ -126,6 +133,11 @@ recordForm.addEventListener("submit", (ev) => {
         }
     }
 });
+
+// Bắt sự kiện click nút tìm kiếm
+btnSearch.addEventListener("click", handleSearch);
+//Bắt sự kiện người dùng nhập vào ô input
+searchInput.addEventListener("input", handleSearch);
 
 //================================== CÁC HÀM THAO TÁC DỮ LIỆU VS HỆ THỐNG ============================================
 function showRecords(){

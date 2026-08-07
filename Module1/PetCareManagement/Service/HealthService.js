@@ -25,6 +25,7 @@ export default class HealthService{
             record.note = "Chưa có ghi chú!";
         }
     }
+
     getAllRecords(){
         return this.#repository.findAll();
     }
@@ -46,6 +47,24 @@ export default class HealthService{
     }
     deleteAllRecordByPetId(petId){
         return this.#repository.deteteAllByPetId(petId);
+    }
+    searchRecords(keyword) {
+        if (!keyword || !keyword.trim()) {
+            return this.getAllRecords();
+        }
+        const cleanKey = keyword.trim().toLowerCase();
+
+        if (!cleanKey.includes('-')) {
+            const petId = Number(cleanKey);
+            if (!isNaN(petId) && Number.isInteger(petId)) {
+                return this.#repository.getAllByPetId(petId);
+            }
+        }
+
+        return this.#repository.findAll().filter(record =>
+            record.note.toLowerCase().includes(cleanKey) ||
+            record.date.toLowerCase().includes(cleanKey)
+        );
     }
 
 }

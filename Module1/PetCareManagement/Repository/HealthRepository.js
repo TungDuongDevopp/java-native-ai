@@ -147,5 +147,9 @@ export default class HealthRepository{
         return true;
     }
 
+    getAllByPetId(petId){
+        return this.findAll().filter(x=> Number(x.petId) === Number(petId));
+    }
+
 }
 
