@@ -68,8 +68,35 @@ export default class AccountService{
 
     }
     changePassword(username,password){
+        const account = this.#repository.findByUserName(username);
+        if(!account){
+            throw new Error("Tài khoản không tồn tại");
+        }
 
+        if(!password || !password.trim()){
+            throw new Error("Mật khẩu không hợp lệ");
+        }
+        if(password.length<6){
+            throw new Error("Mật khẩu quá ngắn");
+        }
 
+        if(password===account.password){
+            throw new Error("Mật khẩu không được trùng vs mật khẩu cũ");
+        }
+
+        account.password = password;
+        this.updateAccount(account);
+
+        // Xoá session đăng nhập nếu đang đăng nhập bằng account này
+        const loggedInUser = localStorage.getItem("loggedInUser");
+        if (loggedInUser) {
+            try {
+                const parsed = JSON.parse(loggedInUser);
+                if (parsed.username === username) {
+                    localStorage.removeItem("loggedInUser");
+                }
+            } catch (_) {}
+        }
     }
 
 

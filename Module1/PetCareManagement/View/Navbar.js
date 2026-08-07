@@ -2,7 +2,7 @@ export default class Navbar {
 
     static render(activeTab = '') {
 
-       // Kiểm tra xem đã đăng nhập chưa
+        // Kiểm tra xem đã đăng nhập chưa
         const loggedInUser = localStorage.getItem("loggedInUser");
 
         if (!loggedInUser) {
@@ -69,9 +69,7 @@ export default class Navbar {
         if (btnLogout) {
             btnLogout.addEventListener("click", (e) => {
                 e.preventDefault();
-                localStorage.removeItem("loggedInUser");
-                alert("Đăng xuất thành công!");
-                window.location.href = "../login.html";
+                document.dispatchEvent(new CustomEvent("navbar:logout"));
             });
         }
 
@@ -79,7 +77,7 @@ export default class Navbar {
         if (btnChangePass) {
             btnChangePass.addEventListener("click", (e) => {
                 e.preventDefault();
-                alert("Chức năng đổi mật khẩu đang được phát triển!");
+                document.dispatchEvent(new CustomEvent("navbar:changePassword"));
             });
         }
     }

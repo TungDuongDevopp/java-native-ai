@@ -1,14 +1,10 @@
 import HealthRepository from "../Repository/HealthRepository.js";
 import HealthService from "../Service/HealthService.js";
 import Render from "../View/Render.js";
-import Navbar from "../View/Navbar.js";
 import PetService from "../Service/PetService.js";
 import PetRepository from "../Repository/PetRepository.js";
 
 
-
-// Khởi tạo Navbar cho trang Hồ sơ sức khỏe
-Navbar.render("record");
 
 const repository = new HealthRepository();
 const service = new HealthService(repository);

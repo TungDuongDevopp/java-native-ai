@@ -3,11 +3,6 @@ import OwnerService from "../Service/OwnerService.js";
 import Render from "../View/Render.js";
 import PetService from "../Service/PetService.js";
 import PetRepository from "../Repository/PetRepository.js";
-import Navbar from "../View/Navbar.js";
-
-// Khởi tạo Navbar cho trang Chủ thú cưng
-Navbar.render("owner");
-
 // ========== KHỞI TẠO ĐỐI TƯỢNG VÀ INJECT  ==========
 
 const repository = new OwnerRepository();

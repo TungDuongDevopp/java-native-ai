@@ -3,12 +3,10 @@ import PetService from "../Service/PetService.js";
 import Render from "../View/Render.js";
 import OwnerRepository from "../Repository/OwnerRepository.js";
 import OwnerService from "../Service/OwnerService.js";
-import Navbar from "../View/Navbar.js";
 import HealthRepository from "../Repository/HealthRepository.js";
 import HealthService from "../Service/HealthService.js";
 
-// Khởi tạo Navbar cho trang Thú cưng
-Navbar.render("pet");
+
 const healthRepository = new HealthRepository();
 const healthService = new HealthService(healthRepository);
 const repository = new PetRepository();
