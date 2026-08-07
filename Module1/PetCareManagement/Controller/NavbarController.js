@@ -20,8 +20,8 @@ document.addEventListener("navbar:changePassword", () => {
     try {
         const parsed = JSON.parse(currentUser);
         const username = parsed.username || "";
-        window.location.href = `../forgot-password.html?username=${encodeURIComponent(username)}`;
+        window.location.href = `../change-password.html?username=${encodeURIComponent(username)}`;
     } catch (_) {
-        window.location.href = "../forgot-password.html";
+        window.location.href = "../chage-password.html";
     }
 });

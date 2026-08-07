@@ -33,9 +33,9 @@ export default class Navbar {
                             <span class="dropdown-icon">▼</span>
                         </div>
                         <div class="dropdown-menu" id="userDropdown">
-                            <a href="#" class="dropdown-item" id="btnChangePassword">🔑 Đổi mật khẩu</a>
+                            <a class="dropdown-item" style="cursor: pointer" id="btnChangePassword">🔑 Đổi mật khẩu</a>
                             <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item logout" id="btnLogout">🚪 Đăng xuất</a>
+                            <a  class="dropdown-item logout" style="cursor: pointer" id="btnLogout">🚪 Đăng xuất</a>
                         </div>
                     </div>
                 </div>

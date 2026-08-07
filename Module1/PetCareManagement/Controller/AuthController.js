@@ -7,7 +7,7 @@ const service = new AccountService(repository);
 // ========== Helper: xác định đang ở trang nào ==========
 const isLoginPage = !!document.getElementById("loginForm");
 const isRegisterPage = !!document.getElementById("registerForm");
-const isForgotPasswordPage = !!document.getElementById("forgotPasswordForm");
+const isChangePasswordPage = !!document.getElementById("changePasswordForm");
 const loggedInUser = localStorage.getItem("loggedInUser");
 
 //============================Phần tử DOM ===============================================
@@ -15,7 +15,7 @@ const loggedInUser = localStorage.getItem("loggedInUser");
 //Phần tử dom của form
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
-const forgotPasswordForm = document.getElementById("forgotPasswordForm");
+const changePasswordForm = document.getElementById("changePasswordForm");
 
 //Phần tử dom ô input form đăng nhập
 const loginUsername = document.getElementById("username");
@@ -80,7 +80,7 @@ if (isRegisterPage) {
 
 // ========== Xử lý ĐỔI MẬT KHẨU ==========
 
-if (isForgotPasswordPage) {
+if (isChangePasswordPage) {
     // Lấy username: ưu tiên URL param ?username=xxx, sau đó từ loggedInUser
     const urlParams = new URLSearchParams(window.location.search);
     let bindUsername = urlParams.get("username") || "";
@@ -100,26 +100,16 @@ if (isForgotPasswordPage) {
     if (usernameHidden) usernameHidden.value = bindUsername;
 
     // Xử lý submit form
-    if (forgotPasswordForm) {
-        forgotPasswordForm.addEventListener("submit", (e) => {
+    if (changePasswordForm) {
+        changePasswordForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
             const username = document.getElementById("fp-username").value.trim();
             const newPassword = document.getElementById("fp-new-password").value.trim();
             const confirmPassword = document.getElementById("fp-confirm-password").value.trim();
 
-            if (!username) {
-                alert("Không xác định được tài khoản. Vui lòng quay lại trang đăng nhập.");
-                return;
-            }
-
-            if (newPassword !== confirmPassword) {
-                alert("Mật khẩu xác nhận không khớp!");
-                return;
-            }
-
             try {
-                service.changePassword(username, newPassword);
+                service.changePassword(username, newPassword,confirmPassword);
                 alert("Đổi mật khẩu thành công! Vui lòng đăng nhập lại.");
                 window.location.href = "login.html";
             } catch (e) {

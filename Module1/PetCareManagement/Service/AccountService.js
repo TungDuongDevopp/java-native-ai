@@ -67,7 +67,7 @@ export default class AccountService{
         return account;
 
     }
-    changePassword(username,password){
+    changePassword(username,password,confirmPassword){
         const account = this.#repository.findByUserName(username);
         if(!account){
             throw new Error("Tài khoản không tồn tại");
@@ -82,6 +82,9 @@ export default class AccountService{
 
         if(password===account.password){
             throw new Error("Mật khẩu không được trùng vs mật khẩu cũ");
+        }
+        if(password!== confirmPassword){
+            throw new Error("Mật khẩu xác nhận không trùng");
         }
 
         account.password = password;
