@@ -4,27 +4,7 @@ export default class AccountService{
     constructor(repository) {
         this.#repository = repository;
     }
-
-
-    #validationSignUp(account){
-        if(!account.username || !account.username.trim()){
-            throw new Error("Username không được trống");
-        }
-        if(!account.password || !account.password.trim()){
-            throw new Error("Password không được trống");
-        }
-        if(account.username.length<4) {
-            throw new Error("Username quá ngắn, vui lòng đặt lại");
-        }
-        if(account.password.length<6){
-            throw new Error("Password quá ngắn, vui lòng đặt lại")
-        }
-        if(this.isUsernameExist(account.username)){
-            throw new Error("Username đã tồn tại, vui lòng đặt lại")
-        }
-    }
-
-    #validationLogin(username,password){
+    #validationBase(username,password){
         if(!username || !username.trim()){
             throw new Error("Username không được trống");
         }
@@ -32,21 +12,18 @@ export default class AccountService{
             throw new Error("Password không được trống");
         }
     }
-    isUsernameExist(username){
-        const accounts = this.#repository.getAll();
-        return accounts.some(a => a.username === username);
-    }
 
-    getAllAccount(){
-        return this.#repository.getAll();
-    }
-
-    getAccountById(id){
-        return this.#repository.findById(id);
-    }
-
-    deleteAccountById(id){
-        return this.#repository.deleteById(id);
+    #validationSignUp(account){
+        this.#validationBase(account.username,account.password);
+        if(account.username.length<4) {
+            throw new Error("Username quá ngắn, vui lòng đặt lại");
+        }
+        if(account.password.length<6){
+            throw new Error("Password quá ngắn, vui lòng đặt lại");
+        }
+        if(this.#repository.existsByUsername(account.username)){
+            throw new Error("Username đã tồn tại, vui lòng đặt lại");
+        }
     }
 
     saveAccount(account){
@@ -54,21 +31,17 @@ export default class AccountService{
         return this.#repository.save(account);
     }
 
-
-    updateAccount(account){
-        return this.#repository.update(account);
-    }
-
     login(username, password){
-        this.#validationLogin(username,password)
-        const account = this.#repository.findByUserName(username);
-        if(!account|| password !== account.password) return null;
+        this.#validationBase(username,password)
+        const account = this.#repository.findByUsername(username);
+        if(!account || password !== account.password) return null;
         localStorage.setItem("loggedInUser", JSON.stringify(account));
         return account;
 
     }
+
     changePassword(username,password,confirmPassword){
-        const account = this.#repository.findByUserName(username);
+        const account = this.#repository.findByUsername(username);
         if(!account){
             throw new Error("Tài khoản không tồn tại");
         }
@@ -88,21 +61,12 @@ export default class AccountService{
         }
 
         account.password = password;
-        this.updateAccount(account);
-
-        // Xoá session đăng nhập nếu đang đăng nhập bằng account này
-        const loggedInUser = localStorage.getItem("loggedInUser");
-        if (loggedInUser) {
-            try {
-                const parsed = JSON.parse(loggedInUser);
-                if (parsed.username === username) {
-                    localStorage.removeItem("loggedInUser");
-                }
-            } catch (_) {}
+        this.#repository.update(account);
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        if (loggedInUser.username === username) {
+            localStorage.removeItem("loggedInUser");
         }
-    }
 
-
-
+        }
 
 }

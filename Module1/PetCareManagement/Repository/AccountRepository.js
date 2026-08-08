@@ -28,8 +28,7 @@ export default class AccountRepository{
 
     save(account) {
         const accounts = this.getAll();
-        // Tự sinh id tăng dần
-        const maxId = accounts.reduce((max, p) => Math.max(max, p.id), 0);
+        const maxId = accounts.reduce((max, a) => Math.max(max, a.id), 0);
         account.id = maxId + 1;
         accounts.push(account);
         this.saveAll(accounts);
@@ -39,27 +38,22 @@ export default class AccountRepository{
         localStorage.setItem("accounts", JSON.stringify(accounts));
     }
 
-    findById(id) {
-        return this.getAll().find(p => p.id === id);
-    }
-
-    deleteById(id) {
-        const accounts = this.getAll().filter(p => p.id !== id);
-        this.saveAll(accounts);
-    }
-
     update(account){
         const accounts = this.getAll();
-        const index = accounts.findIndex(x=> Number(x.id) === account.id);
+        const index = accounts.findIndex(a=> Number(a.id) === Number(account.id));
         if(index !== -1){
             accounts[index] = account;
             this.saveAll(accounts);
         }
     }
 
-    findByUserName(username){
-        return this.getAll().find(u=>u.username === username)
+    findByUsername(username){
+        return this.getAll().find(a=>a.username === username)
     }
 
+    existsByUsername(username){
+        const accounts = this.getAll();
+        return accounts.some(a => a.username === username);
+    }
 
 }

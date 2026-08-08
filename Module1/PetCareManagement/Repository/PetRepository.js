@@ -52,20 +52,20 @@ export default class PetRepository{
     }
 
     findById(id){
-        return this.findAll().find(x => Number(x.id) === Number(id));
+        return this.findAll().find(p => Number(p.id) === Number(id));
     }
 
     findByOwnerId(ownerId){
-        return this.findAll().find(x => Number(x.ownerId) === Number(ownerId));
-    }
-    findAllByOwnerId(ownerId){
-        return this.findAll().filter(x => Number(x.ownerId) === Number(ownerId));
+        return this.findAll().find(p => Number(p.ownerId) === Number(ownerId));
     }
 
+    findAllByOwnerId(ownerId){
+        return this.findAll().filter(p => Number(p.ownerId) === Number(ownerId));
+    }
 
     save(pet){
         const pets = this.findAll();
-        const maxId = pets.reduce((max,x)=>Math.max(Number(x.id),max),0);
+        const maxId = pets.reduce((max,p)=>Math.max(Number(p.id),max),0);
         pet.id = maxId + 1;
         pets.push(pet);
         this.saveAll(pets);
@@ -78,7 +78,7 @@ export default class PetRepository{
 
     deleteById(id){
         const pets = this.findAll();
-        const newPets = pets.filter(x => Number(x.id) !== Number(id));
+        const newPets = pets.filter(p => Number(p.id) !== Number(id));
 
         if (pets.length === newPets.length) {
             return false;
@@ -89,12 +89,11 @@ export default class PetRepository{
 
     update(pet){
         const pets = this.findAll();
-        const index = pets.findIndex(x => Number(x.id) === Number(pet.id));
+        const index = pets.findIndex(p => Number(p.id) === Number(pet.id));
         if(index !== -1){
             pets[index] = pet;
             this.saveAll(pets)
         }
     }
-
 
 }

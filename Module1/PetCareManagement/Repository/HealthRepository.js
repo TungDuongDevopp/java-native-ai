@@ -114,31 +114,34 @@ export default class HealthRepository{
         this.saveAll(records);
 
     }
+
     saveAll(records){
         localStorage.setItem("healthRecords",JSON.stringify(records));
     }
 
     update(record){
         const records = this.findAll();
-        const index = records.findIndex(x=>Number(x.id)===Number(record.id));
+        const index = records.findIndex(r=>Number(r.id)===Number(record.id));
             if(index!==-1){
                 records[index] = record;
                 this.saveAll(records);
             }
         }
+
     deleteById(id){
         const records = this.findAll();
-        const newRecords = records.filter(x=>Number(x.id)!==Number(id));
+        const newRecords = records.filter(r=>Number(r.id)!==Number(id));
         if(records.length === newRecords.length){
             return false;
         }
         this.saveAll(newRecords);
         return true;
     }
+
     deteteAllByPetId(petId){
         const records = this.findAll();
         const newRecords = records.filter(
-            x => Number(x.petId) !== Number(petId)
+            r => Number(r.petId) !== Number(petId)
         );
         if(records.length === newRecords.length){
             return false;
@@ -148,7 +151,7 @@ export default class HealthRepository{
     }
 
     getAllByPetId(petId){
-        return this.findAll().filter(x=> Number(x.petId) === Number(petId));
+        return this.findAll().filter(r=> Number(r.petId) === Number(petId));
     }
 
 }

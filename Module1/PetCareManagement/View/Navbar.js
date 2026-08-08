@@ -69,7 +69,7 @@ export default class Navbar {
         if (btnLogout) {
             btnLogout.addEventListener("click", (e) => {
                 e.preventDefault();
-                document.dispatchEvent(new CustomEvent("navbar:logout"));
+                document.dispatchEvent(new CustomEvent("logout"));
             });
         }
 
@@ -77,7 +77,7 @@ export default class Navbar {
         if (btnChangePass) {
             btnChangePass.addEventListener("click", (e) => {
                 e.preventDefault();
-                document.dispatchEvent(new CustomEvent("navbar:changePassword"));
+                document.dispatchEvent(new CustomEvent("changePassword"));
             });
         }
     }

@@ -81,29 +81,27 @@ if (isRegisterPage) {
 // ========== Xử lý ĐỔI MẬT KHẨU ==========
 
 if (isChangePasswordPage) {
-    // Lấy username: ưu tiên URL param ?username=xxx, sau đó từ loggedInUser
-    const urlParams = new URLSearchParams(window.location.search);
-    let bindUsername = urlParams.get("username") || "";
-
-    if (!bindUsername && loggedInUser) {
+    let bindUsername = "";
+    if (loggedInUser) {
         try {
             const parsed = JSON.parse(loggedInUser);
             bindUsername = parsed.username || "";
-        } catch (_) { }
+        } catch (_) {
+            window.location.href = "../login.html";
+        }
     }
 
-    // Bind username vào display và hidden input
-    const usernameDisplay = document.getElementById("fp-username-display");
-    const usernameHidden = document.getElementById("fp-username");
+    if (!bindUsername) {
+        window.location.href = "../login.html";
+    }
 
-    if (usernameDisplay) usernameDisplay.textContent = bindUsername || "(chưa có thông tin)";
+    const usernameHidden = document.getElementById("fp-username");
     if (usernameHidden) usernameHidden.value = bindUsername;
 
     // Xử lý submit form
     if (changePasswordForm) {
         changePasswordForm.addEventListener("submit", (e) => {
             e.preventDefault();
-
             const username = document.getElementById("fp-username").value.trim();
             const newPassword = document.getElementById("fp-new-password").value.trim();
             const confirmPassword = document.getElementById("fp-confirm-password").value.trim();
@@ -119,27 +117,3 @@ if (isChangePasswordPage) {
     }
 }
 
-// ========== Xử lý sự kiện từ Navbar ==========
-
-
-document.addEventListener("navbar:logout", () => {
-    localStorage.removeItem("loggedInUser");
-    alert("Đăng xuất thành công!");
-    window.location.href = "../login.html";
-});
-
-document.addEventListener("navbar:changePassword", () => {
-    const currentUser = localStorage.getItem("loggedInUser");
-    if (!currentUser) {
-        window.location.href = "../login.html";
-        return;
-    }
-    try {
-        const parsed = JSON.parse(currentUser);
-        const username = parsed.username || "";
-        // Redirect sang trang đổi mật khẩu, bind username qua URL param
-        window.location.href = `../forgot-password.html?username=${encodeURIComponent(username)}`;
-    } catch (_) {
-        window.location.href = "../forgot-password.html";
-    }
-});

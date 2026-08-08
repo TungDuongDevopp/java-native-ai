@@ -33,6 +33,7 @@ export default class HealthService{
     getRecordById(id){
         return this.#repository.findById(id);
     }
+
     createRecord(record){
         this.#validation(record);
         return this.#repository.save(record);
@@ -42,12 +43,15 @@ export default class HealthService{
         this.#validation(record);
         return this.#repository.update(record);
     }
+
     deleteRecordById(id){
         return this.#repository.deleteById(id);
     }
+
     deleteAllRecordByPetId(petId){
         return this.#repository.deteteAllByPetId(petId);
     }
+
     searchRecords(keyword) {
         if (!keyword || !keyword.trim()) {
             return this.getAllRecords();

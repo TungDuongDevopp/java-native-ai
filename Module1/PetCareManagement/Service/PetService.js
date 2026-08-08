@@ -57,6 +57,7 @@ export default class PetService {
         this.#heathService.deleteAllRecordByPetId(id);
         return this.#repository.deleteById(id);
     }
+
     searchPets(keyword) {
         if (!keyword || !keyword.trim()) {
             return this.getAllPets();

@@ -49,24 +49,25 @@ if (!localStorage.getItem("owners")) {
     }
 
     findById(id){
-        return this.findAll().find(x => Number(x.id) === Number(id));
+        return this.findAll().find(o => Number(o.id) === Number(id));
     }
 
     save(owner){
         const owners = this.findAll();
-        const maxId = owners.reduce((max,x)=>Math.max(Number(x.id),max),0);
+        const maxId = owners.reduce((max,o)=>Math.max(Number(o.id),max),0);
         owner.id = maxId + 1;
         owners.push(owner);
         this.saveAll(owners);
 
     }
+
     saveAll(owners){
         localStorage.setItem("owners",JSON.stringify(owners));
     }
 
     deleteById(id){
         const owners = this.findAll();
-        const newOwners = owners.filter(x => Number(x.id) !== Number(id));
+        const newOwners = owners.filter(o => Number(o.id) !== Number(id));
 
         if (owners.length === newOwners.length) {
             return false;
@@ -74,9 +75,10 @@ if (!localStorage.getItem("owners")) {
         this.saveAll(newOwners);
         return true;
     }
+
     update(owner){
         const owners = this.findAll();
-        const index = owners.findIndex(x => Number(x.id) === Number(owner.id));
+        const index = owners.findIndex(o => Number(o.id) === Number(owner.id));
         if(index !== -1){
             owners[index] = owner;
             this.saveAll(owners)
