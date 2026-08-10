@@ -6,22 +6,30 @@ export default class HealthService{
     }
 
     #validation(record){
-        if(!record.petId){
-            throw new Error("PetId không được trống");
+        const weight = Number(record.weight);
+        const heartRate = Number(record.heartRate);
+        const temperature = Number(record.temperature);
+        const petId = Number(record.petId);
+
+
+        if(!petId || petId <= 0 || !Number.isInteger(petId)){
+            throw new Error("PetId hợp lệ");
         }
         if(!record.date){
             throw new Error("Ngày khám không được trống");
         }
-        if(!record.weight||record.weight <=0){
+        if(!weight || weight<=0 || weight>=150){
             throw new Error("Cân nặng không hợp lệ");
         }
-        if(!record.heartRate||record.heartRate <=0 || record.heartRate>300){
+        if(!heartRate || heartRate<=0 || heartRate>=200){
             throw new Error("Nhịp tim không hợp lệ");
         }
-        if(!record.temperature||record.temperature <=0 || record.temperature>=100){
+        if(!temperature || temperature<=0 || temperature>=100){
             throw new Error("Nhiệt độ không hợp lệ");
         }
-        if(!record.note || !record.note.trim()){
+        if (typeof record.note === 'string' && record.note.trim()) {
+            record.note = record.note.trim();
+        } else {
             record.note = "Chưa có ghi chú!";
         }
     }

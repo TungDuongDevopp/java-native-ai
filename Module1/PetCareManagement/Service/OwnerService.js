@@ -16,7 +16,10 @@ export default class OwnerService {
             throw new Error("Số điện thoại không được để trống");
         }
 
-        if (!owner.address || !owner.address.trim()) {
+        if (typeof owner.address === "string" && owner.address.trim()) {
+           owner.address = owner.address.trim();
+        }
+        else{
             owner.address = "Địa chỉ không rõ!";
         }
     }

@@ -8,6 +8,8 @@ export default class PetService {
     }
 
     #validate(pet) {
+        const ownerId = Number(pet.ownerId);
+
         if (!pet.name || !pet.name.trim()) {
             throw new Error("Tên không được để trống");
         }
@@ -16,14 +18,17 @@ export default class PetService {
             throw new Error("Giống không được để trống");
         }
 
-        if (!pet.breed || !pet.breed.trim()) {
+        if (typeof pet.breed === "string" && pet.breed.trim()) {
+            pet.breed = pet.breed.trim();
+        }
+        else {
             pet.breed = "Loài không rõ!";
         }
         if (!pet.gender) {
             throw new Error("Giới tính không được để trống");
         }
-        if (!pet.ownerId) {
-            throw new Error("Mã owner không được để trống");
+        if (!ownerId || ownerId<=0 || !Number.isInteger(ownerId)) {
+            throw new Error("Mã owner không hợp lệ");
         }
     }
 
