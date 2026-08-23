@@ -27,7 +27,7 @@ public class ListPerformanceComparison {
         // 2. Đo thời gian thực hiện trên ArrayList
         long startTimeArrayList = System.nanoTime();
         for (int i = 0; i < INSERT_COUNT; i++) {
-            arrayList.add(0, i); // Thêm phần tử 'i' vào vị trí số 0 (đầu danh sách)
+            arrayList.addFirst(i); // Thêm phần tử 'i' vào vị trí số 0 (đầu danh sách)
         }
         long endTimeArrayList = System.nanoTime();
         long durationArrayList = endTimeArrayList - startTimeArrayList;
@@ -35,7 +35,7 @@ public class ListPerformanceComparison {
         // 3. Đo thời gian thực hiện trên LinkedList
         long startTimeLinkedList = System.nanoTime();
         for (int i = 0; i < INSERT_COUNT; i++) {
-            linkedList.add(0, i); // Thêm phần tử 'i' vào vị trí số 0 (đầu danh sách)
+            linkedList.addFirst(i); // Thêm phần tử 'i' vào vị trí số 0 (đầu danh sách)
         }
         long endTimeLinkedList = System.nanoTime();
         long durationLinkedList = endTimeLinkedList - startTimeLinkedList;
