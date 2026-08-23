@@ -24,12 +24,11 @@ public class Validation {
     public static boolean isValidDouble(double value, double min, double max, boolean isInteger) {
         if (Double.isNaN(value) || Double.isInfinite(value)) return false;
         if (isInteger && value % 1 != 0) return false;
-        if (value < min || value > max) return false;
-        return true;
+        return !(value < min) && !(value > max);
     }
 
     public static boolean isValidString(String value) {
-        return value != null && !value.isBlank();
+        return (value != null) && !value.isBlank();
     }
 
     public static double getValidDouble(String prompt, double min, double max) {
