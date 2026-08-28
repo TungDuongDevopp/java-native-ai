@@ -14,7 +14,7 @@ public class BinarySearchTree {
     }
 
     private Node insertNode(Node node, int value) {
-        if (node == null) return new Node(value); // 📝 vị trí trống → tạo node mới
+        if (node == null) return new Node(value);
         if (value < node.value) node.left = insertNode(node.left, value);
         else if (value > node.value) node.right = insertNode(node.right, value);
         return node;
@@ -59,22 +59,47 @@ public class BinarySearchTree {
         System.out.print(node.value + " "); // 🏠 Bước 2: In giá trị node hiện tại
         inOrderTraversal(node.right);       // ➡️ Bước 3: Đi sang bên phải
     }
+    public void printTree() {
+        printTree(root, "", true);
+    }
+
+    private void printTree(Node node, String prefix, boolean isTail) {
+        if (node == null) return;
+
+        System.out.println(prefix + (isTail ? "└── " : "├── ") + node.value);
+
+        if (node.left != null || node.right != null) {
+            if (node.left != null) {
+                printTree(
+                        node.left,
+                        prefix + (isTail ? "    " : "│   "),
+                        node.right == null
+                );
+            }
+
+            if (node.right != null) {
+                printTree(
+                        node.right,
+                        prefix + (isTail ? "    " : "│   "),
+                        true
+                );
+            }
+        }
+    }
 
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
-        bst.insert(50);
-        bst.insert(30);
-        bst.insert(70);
-        bst.insert(20);// false
-        bst.insert(60);
-        bst.insert(40);
-        bst.insert(90);
-        bst.insert(80);
         bst.insert(10);
-        bst.insert(15);
-        int minNode = bst.findMin();
-        System.out.println(minNode);
-        bst.printInOrder();
+        bst.insert(20);
+        bst.insert(30);
+        bst.insert(40);// false
+        bst.insert(50);
+        bst.insert(60);
+        bst.insert(70);
+        bst.insert(80);
+        bst.insert(90);
+        bst.insert(100);
+        bst.printTree();
 
     }
 }
