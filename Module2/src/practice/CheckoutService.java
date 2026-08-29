@@ -1,5 +1,7 @@
 package practice;
 
+import practice.enums.CustomerType;
+
 import java.math.BigDecimal;
 
 public class CheckoutService {
