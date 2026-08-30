@@ -1,12 +1,14 @@
 package file;
 
+import practice.Student;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public class ReadFile {
+
     public void readFileText(String filePath) {
         try{
             File file = new File(filePath);
@@ -76,6 +78,7 @@ public class ReadFile {
         }
 
     }
+
     public void writeFile(String filePath, int max){
         try {
             FileWriter writer = new FileWriter(filePath, true);
@@ -87,10 +90,34 @@ public class ReadFile {
         }
     }
 
+    public void writeFileByObject(String filePath) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
+            Student student = new Student("Duong", 9.1, "MALE");
+            oos.writeObject(student);
+            oos.flush();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        System.out.println("Success!");
+    }
+
+    public void readFileByObject(String filePath) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+            Student student = (Student) ois.readObject();
+            System.out.println(student);
+        } catch (IOException | ClassNotFoundException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
     public static void main(String[] args) {
         ReadFile example = new ReadFile();
-        example.readFileText("D:\\java-native-ai\\Module2\\src\\resource\\numbers.txt");
-        example.readFileTextByFiles("D:\\java-native-ai\\Module2\\src\\resource\\numbers.txt");
+//        example.readFileText("D:\\java-native-ai\\Module2\\src\\resource\\numbers.txt");
+//        example.readFileTextByFiles("D:\\java-native-ai\\Module2\\src\\resource\\numbers.txt");
+
+        example.writeFileByObject("D:\\java-native-ai\\Module2\\src\\resource\\object.txt");
+        example.readFileByObject("D:\\java-native-ai\\Module2\\src\\resource\\object.txt");
 
     }
 }
