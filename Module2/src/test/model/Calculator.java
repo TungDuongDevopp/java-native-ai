@@ -1,4 +1,4 @@
-package test;
+package test.model;
 
 public class Calculator {
     public int add(int a, int b) {

@@ -1,4 +1,4 @@
-package test;
+package test.model;
 
 public class NextDayCalculator {
     private static final int MAX_MONTH = 12;
