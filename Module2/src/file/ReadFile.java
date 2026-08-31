@@ -1,6 +1,6 @@
 package file;
 
-import practice.Student;
+import practice.model.Student;
 
 import java.io.*;
 import java.nio.file.Files;

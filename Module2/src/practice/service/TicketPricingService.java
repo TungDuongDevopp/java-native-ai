@@ -1,4 +1,4 @@
-package practice;
+package practice.service;
 
 import java.math.BigDecimal;
 

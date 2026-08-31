@@ -1,4 +1,4 @@
-package practice;
+package practice.inspection;
 
 import java.util.Random;
 

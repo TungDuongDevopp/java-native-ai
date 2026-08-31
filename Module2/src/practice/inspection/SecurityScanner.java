@@ -1,4 +1,4 @@
-package practice;
+package practice.inspection;
 
 public class SecurityScanner {
     public static void main(String[] args) {

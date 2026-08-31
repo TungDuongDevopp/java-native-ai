@@ -1,4 +1,4 @@
-package practice;
+package practice.algorithm;
 
 public class SubStringMaxIncrement {
 

@@ -1,4 +1,4 @@
-package practice;
+package practice.model;
 
 import java.io.Serializable;
 
