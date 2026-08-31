@@ -36,12 +36,12 @@ public class Car implements Runnable {
                 System.out.println("Car" + this.name + ": " + logBuilder + " " + Math.min(DISTANCE, runDistance) + "KM");
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                System.out.println("Car" + this.name + " broken...");
+                System.err.println("Car" + this.name + " broken...");
                 break;
             }
         }
         long endTime = System.currentTimeMillis();
-        System.err.println("Car" + this.name + " Finish in " + (endTime - startTime) / 1000 + "s");
+        System.out.println("Car" + this.name + " Finish in " + (endTime - startTime) / 1000 + "s");
     }
     public static void main(String[] args) {
         Car carA = new Car("A");
