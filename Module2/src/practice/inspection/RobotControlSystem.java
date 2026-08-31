@@ -93,6 +93,7 @@ public class RobotControlSystem {
         robot1.start();
         robot2.start();
 
+
         System.out.println("Hệ thống đứng hình, không bao giờ tới được dòng lệnh này...");
     }
 }
