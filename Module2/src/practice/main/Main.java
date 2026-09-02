@@ -1,13 +1,13 @@
 package practice.main;
-import practice.model.Bullet;
-import practice.model.Gun;
+import practice.designpattern.MathCalculatorProxy;
 
 public class Main {
     public static void main(String[] args) {
-        Gun gun = new Gun();
-        System.out.println("Start");
-        gun.fireInPool();
-        System.out.println("Game over");
-        System.out.println("Tocal bullet created: " + Bullet.count);
+        MathCalculatorProxy proxy = new MathCalculatorProxy();
+        double result = proxy.add(1, 2);
+        System.out.println("1 + 2 = " + result);
+        result = proxy.add(2, Double.MAX_VALUE);
+        System.out.println("2 + Double.MAX_VALUE = " + result);//Should throw exception
     }
+
 }
